@@ -1,29 +1,29 @@
-import * as types from '../constants/ActionTypes'
+import {ADD_USER, ADD_MESSAGE, MESSAGE_RECEIVED, USERS_LIST} from '../constants/ActionTypes'
 
 let nextMessageId = 0
 let nextUserId = 0
 
 export const addMessage = (message, author) => ({
-  type: types.ADD_MESSAGE,
+  type: ADD_MESSAGE,
   id: nextMessageId++,
   message,
   author
 })
 
 export const addUser = name => ({
-  type: types.ADD_USER,
+  type: ADD_USER,
   id: nextUserId++,
   name
 })
 
 export const messageReceived = (message, author) => ({
-  type: types.MESSAGE_RECEIVED,
+  type: MESSAGE_RECEIVED,
   id: nextMessageId++,
   message,
   author
 })
 
 export const populateUsersList = users => ({
-  type: type.USERS_LIST,
+  type: USERS_LIST,
   users
 })
