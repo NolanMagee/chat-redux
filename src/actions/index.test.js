@@ -20,6 +20,6 @@ describe('adding a user', ()=>{
   })
   it('second message should create an action with id of 1', ()=>{
     const user = "Vegeta"
-    expect(addUser(user).id).toEqual(0)
+    expect(addUser(user).id).toEqual(1)
   })
 })
