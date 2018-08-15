@@ -2,7 +2,8 @@ import {ADD_MESSAGE, ADD_USER, USERS_LIST} from '../constants/ActionTypes'
 import {addUser, messageReceived, populateUsersList} from '../actions'
 
 const setupSocket = (dispatch, username)=>{
-  const socket = new WebSocket('ws://localhost:8989')
+  let HOST = location.origin.replace(/^http/, 'ws')
+  const socket = new WebSocket(HOST)
 
   socket.onopen = () =>{
     socket.send(JSON.stringify({

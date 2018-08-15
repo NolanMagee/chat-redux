@@ -13,7 +13,7 @@ app.get('/', (req, res)=>{
 const port = process.env.PORT || 5000;
 app.listen(port);
 
-const wss = new WebSocket.Server({port: 8989})
+const wss = new WebSocket.Server({server: app})
 
 const users = []
 
