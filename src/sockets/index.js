@@ -2,7 +2,16 @@ import {ADD_MESSAGE, ADD_USER, USERS_LIST} from '../constants/ActionTypes'
 import {addUser, messageReceived, populateUsersList} from '../actions'
 
 const setupSocket = (dispatch, username)=>{
-  let HOST = Window.location.origin.replace(/^http/, 'ws')
+  const loc = window.location
+  let HOST
+  if (loc.protocol === 'https:'){
+    HOST = 'wss:'
+  } else {
+    HOST = 'ws:'
+  }
+  HOST += "//" + loc.host
+  HOST += loc.pathname
+  console.log("HOST IS: ", HOST)
   const socket = new WebSocket(HOST)
 
   socket.onopen = () =>{
