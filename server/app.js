@@ -11,6 +11,7 @@ app.get('/', (req, res)=>{
 })
 
 const port = process.env.PORT || 5000;
+console.log("PORT IS: ", port)
 app.listen(port);
 
 const wss = new WebSocket.Server({server: app})
