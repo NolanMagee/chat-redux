@@ -4,17 +4,18 @@ import {addUser, messageReceived, populateUsersList} from '../actions'
 const setupSocket = (dispatch, username)=>{
   const loc = window.location
   let HOST
-  if (loc.protocol === 'https:'){
-    HOST = 'wss:'
+  if (loc.protocol === "https:"){
+    HOST = "ws:"
   } else {
-    HOST = 'ws:'
+    HOST = "ws:"
   }
   HOST += "//" + loc.host
   HOST += loc.pathname
-  console.log("HOST IS: ", HOST)
+  console.log("TRYING TO CONNECT TO: ", HOST)
   const socket = new WebSocket(HOST)
 
   socket.onopen = () =>{
+    console.log("CONNECTION ESTABLISHED ON CLIENT SIDE")
     socket.send(JSON.stringify({
       type: ADD_USER,
       name: username

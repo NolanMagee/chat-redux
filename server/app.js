@@ -1,6 +1,7 @@
 const WebSocket = require('ws')
 const express = require('express')
 const path = require('path')
+const http = require('http')
 
 const app = express()
 
@@ -10,11 +11,17 @@ app.get('/', (req, res)=>{
   res.sendFile(path.join(__dirname, '../build/index.html'))
 })
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8989;
 console.log("PORT IS: ", port)
-app.listen(port);
 
-const wss = new WebSocket.Server({server: app})
+
+const server = http.createServer(app)
+server.listen(port)
+
+const wss = new WebSocket.Server({server: server})
+
+//IMPORTANT APPARENTLY:
+app.on('upgrade', wss.handleUpgrade);
 
 const users = []
 
@@ -27,6 +34,7 @@ const broadcast = (data, ws) => {
 }
 
 wss.on('connection', (ws)=>{
+  console.log("USER CONNECTED")
   let index
   ws.on('message', (message)=>{
     const data = JSON.parse(message)
