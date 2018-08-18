@@ -14,14 +14,9 @@ app.get('/', (req, res)=>{
 const port = process.env.PORT || 5000;
 console.log("PORT IS: ", port)
 
-
 const server = http.createServer(app)
-server.listen(port)
-
 const wss = new WebSocket.Server({server: server})
-
-//IMPORTANT APPARENTLY:
-app.on('upgrade', wss.handleUpgrade);
+server.listen(port)
 
 const users = []
 

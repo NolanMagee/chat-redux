@@ -5,7 +5,7 @@ const setupSocket = (dispatch, username)=>{
   const loc = window.location
   let HOST
   if (loc.protocol === "https:"){
-    HOST = "ws:"
+    HOST = "wss:"
   } else {
     HOST = "ws:"
   }
