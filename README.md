@@ -1,5 +1,7 @@
 A chat app using Redux, Redux Saga, and WebSockets
 
+demo: https://fast-refuge-84984.herokuapp.com/app.js
+
 A username is randomly generated when a user joins. Try opening multiple windows to test it out.
 
 The backend is a WebSocket server hosted on Heroku free tier. The free tier dynos take a while to start up so it can be buggy.
